@@ -1,7 +1,7 @@
-# Welcome to Summer2022-CPW219-eCommerceSite
+# Welcome to Summer2022-CPW219-eCommerce site
 ## About this project
-This project is a on going project to demonstrate the basics of:
-- Code First
+This project is an ongoing project to demonstrate the basics of:
+- Code First database design
 - Entity Framework Core
   - Installation of NuGet packages
     - Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
