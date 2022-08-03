@@ -1,3 +1,11 @@
+[![.NET](https://github.com/JoeDLehmanJr/Summer2022-CPW219-eCommerceSite/actions/workflows/dotnet.yml/badge.svg)](https://github.com/JoeDLehmanJr/Summer2022-CPW219-eCommerceSite/actions/workflows/dotnet.yml)
+<br>
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
+<br>
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+<br>
+![Mozilla Add-on](https://img.shields.io/amo/dw/Downloads?color=brightgreen&label=Week%20Downloads&logo=downloads&logoColor=blue&style=for-the-badge)
+
 # Welcome to Summer2022-CPW219-eCommerce site
 ## About this project
 This project is an ongoing project to demonstrate the basics of:
@@ -22,3 +30,4 @@ This project is an ongoing project to demonstrate the basics of:
 - [ASP.NET Core MVC with EF Core - tutorial](https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/?view=aspnetcore-6.0)
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 - [Entity Framework - Code First Approach](https://www.tutorialspoint.com/entity_framework/entity_framework_code_first_approach.htm)
+- [Entity Framework - Reverse Engineering](https://docs.microsoft.com/en-us/ef/core/managing-schemas/scaffolding?tabs=vs)
