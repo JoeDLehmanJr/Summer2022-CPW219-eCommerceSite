@@ -4,6 +4,10 @@
 <br>
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
 <br>
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+<br>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+<br>
 ![Mozilla Add-on](https://img.shields.io/amo/dw/Downloads?color=brightgreen&label=Week%20Downloads&logo=downloads&logoColor=blue&style=for-the-badge)
 
 # Welcome to Summer2022-CPW219-eCommerce site
