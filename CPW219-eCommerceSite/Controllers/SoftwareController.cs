@@ -19,7 +19,7 @@ namespace CPW219_eCommerceSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
@@ -27,12 +27,12 @@ namespace CPW219_eCommerceSite.Controllers
                 _context.Products.Add(product);
 
                 // add to DB
-                _context.SaveChanges();
-                ViewData["Message"] = $"{product.Title} has been added to the database";
-
+                // For Async Information in tutorial:
+                // https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-6.0#asynchronous-code
+                await _context.SaveChangesAsync();
+                
                 // Show success message on page
-                // return RedirectToAction("Index", "Home");
-
+                ViewData["Message"] = $"{product.Title} has been added to the database";
                 return View();
             }
             return View(product);
