@@ -1,6 +1,7 @@
 ﻿using CPW219_eCommerceSite.Data;
 using CPW219_eCommerceSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CPW219_eCommerceSite.Controllers
 {
@@ -12,6 +13,19 @@ namespace CPW219_eCommerceSite.Controllers
         {
             _context = context;
         }
+
+        public async Task<IActionResult> Index()
+        {
+            // Get all Products from the DB (method Syntax)
+            // List<Product> products = _context.Product.ToList();
+
+            //Get all Products from the DB (Query Syntax)
+            List<Product> products = await (from product in _context.Product select product).ToListAsync();
+
+            // Show them on the page
+            return View(products);
+        }
+
         [HttpGet]
         public IActionResult Create() 
         {
@@ -24,7 +38,7 @@ namespace CPW219_eCommerceSite.Controllers
             if (ModelState.IsValid)
             {
                 // Prepares Insert
-                _context.Products.Add(product);
+                _context.Product.Add(product);
 
                 // add to DB
                 // For Async Information in tutorial:
