@@ -52,6 +52,7 @@ namespace CPW219_eCommerceSite.Controllers
             return View(product);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             Product productToEdit = await _context.Product.FindAsync(id);
@@ -60,6 +61,26 @@ namespace CPW219_eCommerceSite.Controllers
                 return NotFound();
             }
             return View(productToEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                // Prepares Insert
+                _context.Product.Update(product);
+
+                // add to DB
+                // For Async Information in tutorial:
+                // https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-6.0#asynchronous-code
+                await _context.SaveChangesAsync();
+
+                // Show success message on page
+                ViewData["Message"] = $"{product.Title} has been updated in the database";
+                return RedirectToAction("Index");
+            }
+            return View(product);
         }
     }
 }
