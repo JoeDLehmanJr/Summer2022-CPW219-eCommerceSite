@@ -116,5 +116,16 @@ namespace CPW219_eCommerceSite.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            Product productDetails = await _context.Product.FindAsync(id);
+            if (productDetails == null)
+            {
+                return NotFound();
+            }
+            return View(productDetails);
+        }
     }
 }
