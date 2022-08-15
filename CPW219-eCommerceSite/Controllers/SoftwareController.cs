@@ -77,7 +77,7 @@ namespace CPW219_eCommerceSite.Controllers
                 await _context.SaveChangesAsync();
 
                 // Show success message on page
-                ViewData["Message"] = $"{product.Title} has been updated in the database";
+                TempData["Message"] = $"{product.Title} has been updated in the database";
                 return RedirectToAction("Index");
             }
             return View(product);
