@@ -82,5 +82,39 @@ namespace CPW219_eCommerceSite.Controllers
             }
             return View(product);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Product productToDelete = await _context.Product.FindAsync(id);
+            if (productToDelete == null)
+            {
+                return NotFound();
+            }
+            return View(productToDelete);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            Product productToDelete = await _context.Product.FindAsync(id);
+
+            if (productToDelete != null)
+            {
+                // Prepares Insert
+                _context.Product.Remove(productToDelete);
+
+                // add to DB
+                // For Async Information in tutorial:
+                // https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-6.0#asynchronous-code
+                await _context.SaveChangesAsync();
+                TempData["Message"] = productToDelete.Title + " was deleted successfully.";
+                return RedirectToAction("Index");
+
+            }
+            TempData["Message"] = "This product was already deleted.";
+
+            return RedirectToAction("Index");
+        }
     }
 }
