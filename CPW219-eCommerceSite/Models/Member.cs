@@ -1,4 +1,6 @@
-﻿namespace CPW219_eCommerceSite.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CPW219_eCommerceSite.Models
 {
     public class Member
     {
