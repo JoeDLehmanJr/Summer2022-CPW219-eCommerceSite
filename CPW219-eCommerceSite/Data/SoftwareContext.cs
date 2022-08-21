@@ -10,5 +10,6 @@ namespace CPW219_eCommerceSite.Data
         }
 
         public DbSet<Product> Product { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }
