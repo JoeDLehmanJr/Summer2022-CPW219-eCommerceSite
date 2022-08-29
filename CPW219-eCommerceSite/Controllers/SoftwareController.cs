@@ -18,7 +18,14 @@ namespace CPW219_eCommerceSite.Controllers
         {
             // Get all Products from the DB (method Syntax)
             // List<Product> products = _context.Product.ToList();
-
+            
+            /**
+             * Only allows log in people to see the catalog
+            if (HttpContext.Session.GetString("Email") == null)
+            {
+                return RedirectToAction("Login", "Members");
+            }
+            */
             //Get all Products from the DB (Query Syntax)
             List<Product> products = await (from product in _context.Product select product).ToListAsync();
 
