@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor _httpContext
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,25 +20,39 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav ms-auto flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Software" asp-action="Create">Create</a>
+                            <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Software" asp-action="Create">Create</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Software" asp-action="Index">Software Catalog</a>
+                            <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Software" asp-action="Index">Software Catalog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Login">Log In</a>
-                        </li>
+                        @{
+                            string? userEmail = _httpContext.HttpContext.Session.GetString("Email");
+                        }
+
+
+                        @if (userEmail == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold text-light" asp-area="" asp-controller="Members" asp-action="Login">Log In</a>
+                            </li>
+                        }
+                        else 
+                        {
+                            <li>
+                                <p class="fw-bold text-light">Hello @userEmail</p>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
