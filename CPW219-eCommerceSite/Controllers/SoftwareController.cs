@@ -14,11 +14,18 @@ namespace CPW219_eCommerceSite.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            // Get all Products from the DB (method Syntax)
-            // List<Product> products = _context.Product.ToList();
+            const int NumberSoftwareToDisplay = 3;
             
+            // Need a page offset to use current page and figure out, number of software programs to skip
+            const int PageOffset = 1;
+            
+            // Set currPage to id if it has a value, otherwise use 1
+            int currPage = id ?? 1;
+            // Get all Products from the DB (method Syntax)
+            // List<Product> products = _context.Product.Skip(NumberSoftwareToDisplay * (currPage - PageOffset)).Take(NumberSoftwareToDisplay).ToList();
+
             /**
              * Only allows log in people to see the catalog
             if (HttpContext.Session.GetString("Email") == null)
@@ -27,7 +34,10 @@ namespace CPW219_eCommerceSite.Controllers
             }
             */
             //Get all Products from the DB (Query Syntax)
-            List<Product> products = await (from product in _context.Product select product).ToListAsync();
+            List<Product> products = await (from product in _context.Product select product)
+                .Skip(NumberSoftwareToDisplay * (currPage - PageOffset))
+                .Take(NumberSoftwareToDisplay)
+                .ToListAsync();
 
             // Show them on the page
             return View(products);
