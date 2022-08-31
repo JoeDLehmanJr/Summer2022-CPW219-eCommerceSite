@@ -23,6 +23,13 @@ namespace CPW219_eCommerceSite.Controllers
             
             // Set currPage to id if it has a value, otherwise use 1
             int currPage = id ?? 1;
+
+            int totalNumberOfProducts = await _context.Product.CountAsync();
+            double MaxNumberOfPages = Math.Ceiling((double)totalNumberOfProducts / NumberSoftwareToDisplay);
+
+            // Rounding pages up, to next whole page number
+            int lastPage = Convert.ToInt32(MaxNumberOfPages);
+
             // Get all Products from the DB (method Syntax)
             // List<Product> products = _context.Product.Skip(NumberSoftwareToDisplay * (currPage - PageOffset)).Take(NumberSoftwareToDisplay).ToList();
 
@@ -33,14 +40,18 @@ namespace CPW219_eCommerceSite.Controllers
                 return RedirectToAction("Login", "Members");
             }
             */
+
+
             //Get all Products from the DB (Query Syntax)
             List<Product> products = await (from product in _context.Product select product)
                 .Skip(NumberSoftwareToDisplay * (currPage - PageOffset))
                 .Take(NumberSoftwareToDisplay)
                 .ToListAsync();
 
+            SoftwareCatalogViewModel catalogModel = new(products, lastPage, currPage);
+
             // Show them on the page
-            return View(products);
+            return View(catalogModel);
         }
 
         [HttpGet]
