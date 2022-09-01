@@ -39,4 +39,16 @@ namespace CPW219_eCommerceSite.Models
         public string Description { get; set; }
 
     }
+
+    /// <summary>
+    /// A single software title that has been added to the users shopping cart cookie
+    /// </summary>
+    public class CartSoftwareViewModel
+    {
+        public int ProductId { get; set; }
+
+        public string Title { get; set; }
+
+        public decimal Price { get; set; }       
+    }
 }
