@@ -21,7 +21,5 @@
         /// The current page the user is viewing
         /// </summary>
         public int CurrentPage { get; private set; }
-
-
     }
 }
