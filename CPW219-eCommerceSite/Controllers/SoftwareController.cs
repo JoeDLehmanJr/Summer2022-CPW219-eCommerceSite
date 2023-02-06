@@ -16,7 +16,7 @@ namespace CPW219_eCommerceSite.Controllers
 
         public async Task<IActionResult> Index(int? id)
         {
-            const int NumberSoftwareToDisplay = 7;
+            const int NumberSoftwareToDisplay = 10;
             
             // Need a page offset to use current page and figure out, number of software programs to skip
             const int PageOffset = 1;
